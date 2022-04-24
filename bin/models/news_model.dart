@@ -11,7 +11,7 @@ class NewsModel {
   NewsModel(this.id, this.title, this.description, this.image,
       this.dtPublication, this.dtAtualization);
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'title': title,
@@ -32,6 +32,4 @@ class NewsModel {
           : null,
     );
   }
-
-  String toJson() => json.encode(toMap());
 }
