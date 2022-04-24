@@ -5,12 +5,14 @@ import 'package:shelf_router/shelf_router.dart';
 
 import '../models/news_model.dart';
 import '../services/generic_service.dart';
+import 'api.dart';
 
-class BlogApi {
+class BlogApi extends Api {
   final GenericService<NewsModel> _service;
   BlogApi(this._service);
 
-  Handler get handler {
+  @override
+  getHandler({List<Middleware>? middlewares}) {
     Router router = Router();
 
     router.get('/blog/news', (Request req) async {
@@ -25,6 +27,6 @@ class BlogApi {
       return Response(201);
     });
 
-    return router;
+    return createHandler(router: router, middlewares: middlewares);
   }
 }
